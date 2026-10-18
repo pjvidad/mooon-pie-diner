@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moon Pie Diner — open all orbit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Space+Mono:wght@400;700&family=Nunito:wght@500;700&display=swap">
+<style>
+:root{
+  --sky1:#150b3d; --sky2:#3b1a7a; --ink:#fff6e0; --card:#231255; --line:#6c4fd1;
+  --pink:#ff4fa3; --cyan:#3ff3e0; --butter:#ffd84a; --glow:1;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){--sky1:#ffe7f1; --sky2:#c9b8ff; --ink:#2a1163; --card:#fff8e8; --line:#2a1163; --pink:#e0197d; --cyan:#0a9d92; --butter:#ffb800; --glow:.25}
+}
+:root[data-theme="light"]{--sky1:#ffe7f1; --sky2:#c9b8ff; --ink:#2a1163; --card:#fff8e8; --line:#2a1163; --pink:#e0197d; --cyan:#0a9d92; --butter:#ffb800; --glow:.25}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:500 1.08rem/1.6 Nunito,system-ui,sans-serif;overflow-x:hidden;
+  background:
+   radial-gradient(1.5px 1.5px at 12% 18%,var(--ink) 50%,transparent),radial-gradient(2px 2px at 78% 12%,var(--ink) 50%,transparent),
+   radial-gradient(1.5px 1.5px at 40% 60%,var(--ink) 50%,transparent),radial-gradient(2px 2px at 90% 70%,var(--ink) 50%,transparent),
+   radial-gradient(1.5px 1.5px at 25% 88%,var(--ink) 50%,transparent),radial-gradient(1px 1px at 62% 35%,var(--ink) 50%,transparent),
+   linear-gradient(180deg,var(--sky1),var(--sky2));
+  background-size:300px 300px,420px 420px,360px 360px,500px 500px,280px 280px,200px 200px,auto;background-attachment:scroll}
+.disp{font-family:"Bagel Fat One",system-ui,sans-serif;font-weight:400}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:8vh 6vw;overflow:hidden}
+.sign{position:relative;z-index:2;border:6px solid var(--cyan);border-radius:60px;padding:2.4rem 3rem 2rem;
+  box-shadow:0 0 calc(30px*var(--glow)) var(--cyan),inset 0 0 calc(30px*var(--glow)) var(--cyan);background:color-mix(in srgb,var(--sky1) 70%,transparent)}
+.sign small{display:block;font:700 1rem/1 "Space Mono",monospace;letter-spacing:.4em;color:var(--cyan);text-transform:uppercase;margin-bottom:1rem}
+.sign h1{margin:0;font-size:clamp(3.4rem,13vw,9.5rem);line-height:.9;color:var(--pink);
+  text-shadow:0 0 calc(8px*var(--glow)) var(--pink),0 0 calc(24px*var(--glow)) var(--pink),0 0 calc(60px*var(--glow)) var(--pink)}
+.sign h1 span{display:block;color:var(--butter);text-shadow:0 0 calc(8px*var(--glow)) var(--butter),0 0 calc(26px*var(--glow)) var(--butter);font-size:.62em}
+.sign h1 i{font-style:normal;animation:flick 4s steps(1) infinite}
+@keyframes flick{0%,18%,22%,62%,64%,100%{opacity:1}20%,63%{opacity:.15}}
+.open{display:inline-block;margin-top:1.4rem;padding:.35rem 1.2rem;border:3px solid var(--cyan);border-radius:99px;color:var(--cyan);font:700 1.1rem "Space Mono",monospace;animation:pulse 1.6s ease-in-out infinite alternate}
+@keyframes pulse{to{box-shadow:0 0 22px var(--cyan);color:var(--ink)}}
+
+/* PLANET */
+.planet{position:absolute;right:-6vmax;top:7vh;width:clamp(180px,34vmax,420px);aspect-ratio:1;z-index:1;animation:float 9s ease-in-out infinite alternate}
+.planet::before{content:"";position:absolute;inset:-14% -34%;border:14px solid var(--butter);border-radius:50%;transform:rotate(-18deg) scaleY(.28);opacity:.9}
+.planet i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff3b8,var(--pink) 45%,#7b1fa2 100%);
+  box-shadow:inset -20px -20px 40px rgba(30,0,80,.45)}
+.planet i::before,.planet i::after{content:"";position:absolute;border-radius:50%;background:rgba(80,0,120,.28)}
+.planet i::before{width:22%;aspect-ratio:1;left:20%;top:55%}.planet i::after{width:12%;aspect-ratio:1;left:58%;top:28%}
+.planet b{position:absolute;inset:-14% -34%;border:14px solid var(--butter);border-radius:50%;transform:rotate(-18deg) scaleY(.28);clip-path:inset(50% 0 0 0)}
+@keyframes float{to{transform:translateY(24px) rotate(6deg)}}
+
+/* ROCKET */
+.rocket{position:absolute;left:-90px;bottom:16vh;width:46px;height:96px;z-index:3;animation:zoom 14s linear infinite;transform:rotate(70deg)}
+.rocket::before{content:"";position:absolute;inset:0 4px 14px;background:linear-gradient(90deg,#fff,#cfd8ff);border-radius:50% 50% 8px 8px/70% 70% 8px 8px;box-shadow:inset 0 -6px 0 var(--pink)}
+.rocket::after{content:"";position:absolute;left:16px;top:28px;width:14px;height:14px;border-radius:50%;background:var(--cyan);border:3px solid var(--ink)}
+.rocket s{position:absolute;left:12px;bottom:-26px;width:22px;height:36px;background:linear-gradient(var(--butter),var(--pink),transparent);border-radius:0 0 50% 50%;animation:burn .12s linear infinite alternate}
+@keyframes burn{to{transform:scaleY(1.35)}}
+@keyframes zoom{0%{left:-90px;bottom:10vh}100%{left:110vw;bottom:70vh}}
+
+/* TAPE */
+.checker{height:48px;background:conic-gradient(var(--ink) 25%,var(--card) 0 50%,var(--ink) 0 75%,var(--card) 0) 0 0/48px 48px;border-block:4px solid var(--line)}
+
+/* MENU */
+.wrap{max-width:62rem;margin:0 auto;padding:12vh 6vw}
+.wrap h2{font-size:clamp(2.4rem,7vw,5rem);margin:0 0 .4rem;line-height:1;color:var(--butter)}
+.wrap>p{margin:0 0 2.2rem;color:var(--ink);opacity:.85}
+.menu input{position:absolute;opacity:0;pointer-events:none}
+.tabs{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:1.6rem}
+.tabs label{cursor:pointer;padding:.55rem 1.3rem;border:3px solid var(--line);border-radius:99px;background:var(--card);font:700 1rem "Space Mono",monospace;transition:transform .2s}
+.tabs label:hover{transform:rotate(-3deg) scale(1.05)}
+#t1:checked~.tabs [for=t1],#t2:checked~.tabs [for=t2],#t3:checked~.tabs [for=t3]{background:var(--pink);color:#fff;border-color:var(--pink);transform:rotate(-2deg)}
+#t1:focus-visible~.tabs [for=t1],#t2:focus-visible~.tabs [for=t2],#t3:focus-visible~.tabs [for=t3]{outline:3px solid var(--cyan);outline-offset:3px}
+.panel{display:none;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+#t1:checked~.panels .p1,#t2:checked~.panels .p2,#t3:checked~.panels .p3{display:grid;animation:pop .45s cubic-bezier(.2,1.5,.4,1)}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.96)}}
+.dish{background:var(--card);border:3px solid var(--line);border-radius:26px;padding:1.3rem 1.4rem;box-shadow:7px 7px 0 var(--line);transition:transform .25s}
+.dish:nth-child(odd){transform:rotate(-1.2deg)}.dish:nth-child(even){transform:rotate(1.2deg)}
+.dish:hover{transform:rotate(0) translateY(-6px)}
+.dish h3{margin:0;font-size:1.5rem;line-height:1.1;color:var(--pink)}
+.dish p{margin:.4rem 0 .8rem;font-size:.98rem}
+.dish span{font:700 1rem "Space Mono",monospace;background:var(--butter);color:#2a1163;padding:.15rem .6rem;border-radius:8px}
+
+/* COFFEE */
+.cafe{display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center;max-width:62rem;margin:0 auto;padding:4vh 6vw 14vh}
+.cup{position:relative;width:150px;height:130px;background:linear-gradient(90deg,#fff,#e6e0ff);border-radius:0 0 70px 70px;border:4px solid var(--line);margin:70px 40px 0 0}
+.cup::before{content:"";position:absolute;left:-4px;right:-4px;top:-4px;height:30px;border-radius:50%;background:#4a2410;border:4px solid var(--line)}
+.cup::after{content:"";position:absolute;right:-48px;top:26px;width:52px;height:56px;border:12px solid #e6e0ff;border-left:0;border-radius:0 40px 40px 0;box-shadow:0 0 0 4px var(--line)}
+.cup u{position:absolute;bottom:105px;width:12px;height:60px;border-radius:99px;background:linear-gradient(transparent,var(--ink));opacity:0;animation:steam 3.2s ease-in infinite}
+.cup u:nth-child(1){left:36px}.cup u:nth-child(2){left:68px;animation-delay:1s}.cup u:nth-child(3){left:100px;animation-delay:2s}
+@keyframes steam{0%{opacity:0;transform:translateY(24px) scaleX(1)}30%{opacity:.8}100%{opacity:0;transform:translateY(-44px) scaleX(2.2) rotate(8deg)}}
+.cafe h2{font-size:clamp(2rem,5vw,3.4rem);margin:0 0 .6rem;color:var(--cyan);line-height:1}
+.btn{display:inline-block;margin-top:1rem;padding:.9rem 2rem;border-radius:99px;background:var(--butter);color:#2a1163;font:400 1.4rem "Bagel Fat One",sans-serif;text-decoration:none;box-shadow:0 6px 0 #b8860b;transition:transform .15s,box-shadow .15s}
+.btn:hover{animation:wig .4s ease-in-out}.btn:active{transform:translateY(5px);box-shadow:0 1px 0 #b8860b}
+.btn:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
+@keyframes wig{25%{transform:rotate(-5deg) scale(1.06)}75%{transform:rotate(5deg) scale(1.06)}}
+
+footer{text-align:center;padding:5vh 6vw 7vh;border-top:4px dashed var(--line);font:700 .95rem "Space Mono",monospace}
+
+@media (max-width:640px){.cafe{grid-template-columns:1fr;justify-items:center;text-align:center}.sign{padding:1.6rem 1.4rem}.planet{opacity:.75}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="planet" aria-hidden="true"><i></i><b></b></div>
+  <div class="rocket" aria-hidden="true"><s></s></div>
+  <div class="sign">
+    <small>Est. 2087 · Sea of Tranquility</small>
+    <h1 class="disp">Moon P<i>i</i>e<span>Diner</span></h1>
+    <div class="open">★ OPEN ALL ORBIT ★</div>
+  </div>
+</header>
+
+<div class="checker" aria-hidden="true"></div>
+
+<main class="wrap">
+  <h2 class="disp">Today's Menu</h2>
+  <p>Gravity is optional. Pie is not. Pick a counter:</p>
+  <div class="menu">
+    <input type="radio" name="t" id="t1" checked><input type="radio" name="t" id="t2"><input type="radio" name="t" id="t3">
+    <div class="tabs"><label for="t1">🥧 Pies</label><label for="t2">🍔 Mains</label><label for="t3">🥤 Sips</label></div>
+    <div class="panels">
+      <section class="panel p1">
+        <div class="dish"><h3 class="disp">Crater Cherry</h3><p>Deep-dish with a real impact crater of whipped cream.</p><span>4.2 credits</span></div>
+        <div class="dish"><h3 class="disp">Blue Cheese Moon</h3><p>Yes, the moon is made of it. We checked.</p><span>5.0 credits</span></div>
+        <div class="dish"><h3 class="disp">Comet Key Lime</h3><p>Tail of meringue, tangy all the way down.</p><span>4.6 credits</span></div>
+      </section>
+      <section class="panel p2">
+        <div class="dish"><h3 class="disp">Zero-G Burger</h3><p>Triple stack held together by pure optimism.</p><span>9.9 credits</span></div>
+        <div class="dish"><h3 class="disp">Rocket Dog</h3><p>Footlong with a chili afterburner. Napkins in orbit.</p><span>7.5 credits</span></div>
+        <div class="dish"><h3 class="disp">Nebula Noodles</h3><p>Violet noodles, cosmic crunch, mild existential dread.</p><span>8.4 credits</span></div>
+      </section>
+      <section class="panel p3">
+        <div class="dish"><h3 class="disp">Stardust Shake</h3><p>Vanilla, sprinkles, and a pinch of actual glitter.</p><span>5.5 credits</span></div>
+        <div class="dish"><h3 class="disp">Black Hole Brew</h3><p>Coffee so dark it bends the cup. Refills are infinite.</p><span>3.0 credits</span></div>
+        <div class="dish"><h3 class="disp">Aurora Soda</h3><p>Teal to pink as you drink. Fizz may escape the atmosphere.</p><span>4.0 credits</span></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<section class="cafe">
+  <div class="cup" role="img" aria-label="A steaming cup of coffee"><u></u><u></u><u></u></div>
+  <div>
+    <h2 class="disp">The first cup is on the house.</h2>
+    <p>Wander in from any planet, sit at the counter, and watch Earth rise through the window while the pie spins.</p>
+    <a class="btn" href="#top">Grab a stool</a>
+  </div>
+</section>
+
+<footer>© 2087 Moon Pie Diner · No pies were harmed in low gravity</footer>
+
+</body>
+</html>
